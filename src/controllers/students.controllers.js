@@ -35,10 +35,20 @@ const update = catchError(async(req, res) => {
     return res.json(result[1][0]);
 });
 
+
+const setStudentCourses = catchError(async(req, res) => {
+    const { id } = req.params;
+    const result = await Students.findByPk(id)
+    await result.setCourses(req.body)
+    const courses = result.getCourses()
+    return res.json(courses)
+});
+
 module.exports = {
     getAll,
     create,
     getOne,
     remove,
-    update
+    update,
+    setStudentCourses
 }   
