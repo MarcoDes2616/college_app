@@ -40,7 +40,7 @@ const setStudentCourses = catchError(async(req, res) => {
     const { id } = req.params;
     const result = await Students.findByPk(id)
     await result.setCourses(req.body)
-    const courses = result.getCourses()
+    const courses = await result.getCourses()
     return res.json(courses)
 });
 

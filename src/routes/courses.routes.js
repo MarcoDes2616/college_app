@@ -1,4 +1,4 @@
-const { getAll, create, getOne, remove, update, setStudentCourses } = require('../controllers/courses.controllers');
+const { getAll, create, getOne, remove, update, setCoursesStudents } = require('../controllers/courses.controllers');
 const express = require('express');
 
 const coursesRoutes = express.Router();
@@ -12,6 +12,7 @@ coursesRoutes.route('/:id')
     .delete(remove)
     .put(update);
 
-coursesRoutes.route("/:id/courses").post(setStudentCourses)
+coursesRoutes.route("/:id/students")
+    .post(setCoursesStudents)
 
 module.exports = coursesRoutes;
